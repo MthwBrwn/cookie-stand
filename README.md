@@ -10,3 +10,10 @@ navy Blue #18121E
 Gunmetal #233237
 Rusty Red #984B43
 Warm Yellow EAC67A
+
+<link href="https://fonts.googleapis.com/css?family=Eater|Oswald" rel="stylesheet">
+Specify in CSS
+Use the following CSS rules to specify these families:
+
+font-family: 'Oswald', sans-serif;
+font-family: 'Eater', cursive;
