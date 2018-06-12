@@ -27,20 +27,23 @@ var pikeStore = {
     
 };
   
-for (var i=6; i < 22; i++) { 
-  var arrCookie = Math.round(pikeStore.numCookies());
-  console.log(arrCookie);
-  // arrCookie = document.getElementById('first').textContent;
-  // elCookie.textContent = a;
-
-}
-
-function postNum() {
-  document.getElementById("first").textContent = "Paragraph changed!";
-}
-postNum();
+for (var i=0; i < pikeStore.hours.length; i++) { 
   
-// pikeStore.numCookies();
+  console.log(arrCookie);
+  var newElem = document.createElement('li');
+  var arrCookie = Math.round(pikeStore.numCookies());
+  newElem.appendChild(arrCookie);
+  document.getElementById("first").textContent = arrCookie;
+  var position = document.getElementById("first")[i];
+  position.appendChild(newElem);
+
+}
+
+// function postNum() {
+//   document.getElementById("first").textContent = arrCookie;
+// }
+// postNum();
+
 
 
 
