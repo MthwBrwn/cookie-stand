@@ -1,7 +1,9 @@
 
 body{ 
-  background-image: : 
+  /* background-image: :  */
+  background-color: #f4f4f4;
   font-family:'Oswald', sans-serif;
+  width: 90%;
 }
 
 header { 
@@ -12,10 +14,12 @@ section{
   font-size: 14px
 }
 
-aside
+aside {
+  width: 30%;
+}
 
 footer{
-  float: right ;
+  float: right;
   margin-right: 15px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -23,11 +27,11 @@ footer{
 
 h1 {
   font-size: 30px;
-  border-block-start-width: 0ch;
+  border-block-start-width: 10px;
   border-block-start-style: solid;
   border-block-start-color: #984B43;
-  
-}
+  border-block-end: 10px solid #984B43
+  }
 h2{
   font-size: 22px;
 
@@ -35,14 +39,23 @@ h2{
 
 /* footer styling */
 
-h3 {
+h3 { font-style: oblique;
 
 }
 
 
-p
+p { 
+  font-size: 12px; 
+ }
 
-ul
+/* ul {} */
 
-li 
+/* li {} */
+
+#fish {
+  width: 50%;
+  position: absolute;
+  top: 400px;
+  left: 400px, 
+}
 
