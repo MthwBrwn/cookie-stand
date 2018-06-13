@@ -14,14 +14,20 @@ function Store(location, min, max, avg){
   this.max = max;
   this.avg = avg;
   this.cookieHours=0;
-  this.randomCookieValue();
+  // this.randomCookieValue();
   this.renderCookieRow();
-  console.log(Store.prototype[0]);
+
 }
 
 Store.prototype.randomCookieValue = function () {
 
   return Math.round((Math.random() * (this.max - this.min) + this.min) * this.avg);
+};
+
+Store.prototype.getStore= function () {
+  this.location=location;
+  console.log('store location: ', this.location[0]);
+  return this.location[0];
 };
 
 Store.prototype.renderCookieRow= function() {
@@ -32,7 +38,7 @@ Store.prototype.renderCookieRow= function() {
   var tStoreNameEl = document.createElement('td');
   // attach content
   
-  tStoreNameEl.textContent = Store.prototype [0];
+  tStoreNameEl.textContent = this.getStore();
 
   tRowEl.appendChild(tStoreNameEl);
   
@@ -43,7 +49,7 @@ Store.prototype.renderCookieRow= function() {
     var tDataEl = document.createElement('td');
     // attach content
     
-    tDataEl.textContent = this.randomCookieValue + ' cookies';
+    tDataEl.textContent = this.randomCookieValue();
     
     // 3. append to the DOM
     // parentElement.appendChild(childElement);
@@ -55,6 +61,10 @@ Store.prototype.renderCookieRow= function() {
 // create new object for constructor object
 
 var firstAndPike = new Store('first and pike',23,65,6.3);
+var seaTacAirport = new Store('SeaTac Airport',3,24,1.2);
+var seaCenter = new Store('Seattle Center',11,38,2.3);
+var capHill= new Store(' Capitol Hill',20,38,2.3);
+var alki= new Store('Alki',2,16,4.6);
 
 console.log('this.min: ',firstAndPike.min);
 console.log('this.max; ',firstAndPike.max);
