@@ -16,6 +16,7 @@ function Store(location, min, max, avg){
   this.cookieHours=0;
   this.randomCookieValue();
   this.renderCookieRow();
+  console.log(Store.prototype[0]);
 }
 
 Store.prototype.randomCookieValue = function () {
@@ -26,8 +27,14 @@ Store.prototype.randomCookieValue = function () {
 Store.prototype.renderCookieRow= function() {
   // Locate table
   // possible for loop for this =
-  
   var tRowEl = document.createElement('tr');
+// data for store location
+  var tStoreNameEl = document.createElement('td');
+  // attach content
+  
+  tStoreNameEl.textContent = Store.prototype [0];
+
+  tRowEl.appendChild(tStoreNameEl);
   
   for(var i = 0; i < hours.length; i++) {
     //  create  elements
