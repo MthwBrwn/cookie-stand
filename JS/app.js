@@ -8,12 +8,13 @@ var hours = ['6am ','7am','8am','9am','10am','11am','12am','13am','14am','15am',
 //array storing all cookie values
 var tableEl = document.getElementById('first' );
 
-function Store (location, min, max, avg){
+function Store(location, min, max, avg){
   this.location=location;
   this.min = min;
   this.max = max;
   this.avg = avg;
   this.cookieHours=0;
+  this.randomCookieValue();
   this.renderCookieRow();
 }
 
@@ -21,25 +22,22 @@ Store.prototype.randomCookieValue = function () {
 
   return Math.round((Math.random() * (this.max - this.min) + this.min) * this.avg);
 };
-console.log('this.min: ', this.min);
-console.log('this.max; ', this.max);
-console.log('random cookies for store; ', this.randomCookieValue);
 
 Store.prototype.renderCookieRow= function() {
   // Locate table
   // possible for loop for this =
-
+  
   var tRowEl = document.createElement('tr');
-
+  
   for(var i = 0; i < hours.length; i++) {
     //  create  elements
-
+    
     //removed this from create element
     var tDataEl = document.createElement('td');
     // attach content
-
+    
     tDataEl.textContent = this.randomCookieValue + ' cookies';
-
+    
     // 3. append to the DOM
     // parentElement.appendChild(childElement);
     tRowEl.appendChild(tDataEl);
@@ -51,6 +49,9 @@ Store.prototype.renderCookieRow= function() {
 
 var firstAndPike = new Store('first and pike',23,65,6.3);
 
+console.log('this.min: ',firstAndPike.min);
+console.log('this.max; ',firstAndPike.max);
+console.log('random cookies for store ',firstAndPike.randomCookieValue);
 
 // Location        | Min / Cust | Max / Cust | Avg Cookie / Sale
 // ----------------|------------|------------|-------------------
