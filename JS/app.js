@@ -1,4 +1,5 @@
 'use strict';
+console.log('hello world');
 
 // this is my special '42' note!!
 
@@ -11,7 +12,7 @@
 // Alki            |      2     |     16     |        4.6
 
 // global variables 
-var hours= ['6am ','7am','8am','9am','10am','11am','12am','13am','14am','15am','16am','17am','18am','19am','20am'];
+var hours= ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 
 /// 1st object creating PIKE store
 
@@ -20,43 +21,37 @@ var pikeStore = {
   max: 65,
   avg : 6.3,
 
+  // returns random number between min max mult. by the avg
   numCookiesArr : function () {
-
-    return (Math.floor((Math.random() * (this.max - this.min)) + this.min)* (this.avg));
-
+    console.log('min' + pikeStore.min);
+    var randomGenNum= (Math.floor((Math.random() * (this.max - this.min)) + this.min));
+    console.log(randomGenNum);
   },
 
-
-
-  renderCookie : function () {
+  renderCookie: function () {
     var ulPosition = document.getElementById('first');
 
     for (var i=0; i < hours.length; i++) { 
 
-      // console.log();
+      console.log(hours[i]);
       //create li 
       var newElem = document.createElement('li');
       // give content
-      newElem.textContent= hours[i]+ ': '+ Math.round(pikeStore.numCookiesArr()) + ' cookies' ;
+      newElem.textContent= this.hours[i]+ ': '+ pikeStore.numCookiesArr() + ' cookies' ;
 
       // append to interact with Dom      
       ulPosition.appendChild(newElem);
     }
-  
   },
   // create 
   // give content 
-  // append to the DOM 
-  
+  // append to the DOM  
 };
-  
 
-function newFunction() {
-  var min = Math.ceil(this.min);
-  var max = Math.floor(this.max);
-  var avg = this.avg;
-  return { min, max, avg };
-}
+console.log(pikeStore.min);
+
+
+
 // for (var i=0; i < pikeStore.hours.length; i++) { 
   
 //   console.log(arrCookie);
