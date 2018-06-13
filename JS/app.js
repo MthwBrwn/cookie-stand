@@ -12,68 +12,43 @@
 
 // global variables 
 var hours= ['6am ','7am','8am','9am','10am','11am','12am','13am','14am','15am','16am','17am','18am','19am','20am'];
-
+//array storing all cookie values
+var cookieHours =0;
 /// 1st object creating PIKE store
 
-var pikeStore = {
-  min: 23,
-  max: 65,
-  avg : 6.3,
+ function Store (location, min, max, avg){
+  this.location=location;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.cookieHours=cookieHours;
 
-  numCookiesArr : function () {
 
-    return (Math.floor((Math.random() * (this.max - this.min)) + this.min)* (this.avg));
+  this.numCookiesArr = function () {
 
+    return Math.round((Math.random() * (this.max - this.min) + this.min) * this.avg);
   },
 
+  Store.prototype.renderCookieRow= function() {
+  // Locate table
+    var tableEl = this.document.getElementById('first' );
+    // possible for loop for this =
+    var trEl = this.document.createElement('tr');
+    
+    for(var i = 0; i < this.hours.length; i++) {
+      //  create  elements
+      
+      var tdEl = this.document.createElement('td');
+      
+      // attach content
+      
+      tdEl.textContent =  numCookiesArr + ' cookies';
+      
+      // 3. append to the DOM
+      // parentElement.appendChild(childElement);
+      tdEl.appendChild('tr');
+    };
 
-
-  renderCookie : function () {
-    var ulPosition = document.getElementById('first');
-
-    for (var i=0; i < hours.length; i++) { 
-
-      // console.log();
-      //create li 
-      var newElem = document.createElement('li');
-      // give content
-      newElem.textContent= hours[i]+ ': '+ Math.round(pikeStore.numCookiesArr()) + ' cookies' ;
-
-      // append to interact with Dom      
-      ulPosition.appendChild(newElem);
-    }
-  
   },
-  // create 
-  // give content 
-  // append to the DOM 
-  
-};
-  
-
-function newFunction() {
-  var min = Math.ceil(this.min);
-  var max = Math.floor(this.max);
-  var avg = this.avg;
-  return { min, max, avg };
-}
-// for (var i=0; i < pikeStore.hours.length; i++) { 
-  
-//   console.log(arrCookie);
-//   var newElem = document.createElement('li');
-//   var arrCookie = Math.round(pikeStore.numCookies());
-//   newElem.appendChild(arrCookie);
-//   document.getElementById("first").textContent = arrCookie;
-//   var position = document.getElementById("first")[i];
-//   position.appendChild(newElem);
-
-// }
-
-// function postNum() {
-//   document.getElementById("first").textContent = arrCookie;
-// }
-// postNum();
-
-
-
+ }
 
