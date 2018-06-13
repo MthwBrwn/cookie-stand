@@ -1,17 +1,44 @@
 
-body
+body{ 
+  background-image: : 
+  font-family:'Oswald', sans-serif;
+}
 
-header
+header { 
+  font-family: 'Eater', cursive; 
+}
 
-section
+section{
+  font-size: 14px
+}
 
 aside
 
-footer
+footer{
+  float: right ;
+  margin-right: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
 
-h1
+h1 {
+  font-size: 30px;
+  border-block-start-width: 0ch;
+  border-block-start-style: solid;
+  border-block-start-color: #984B43;
+  
+}
+h2{
+  font-size: 22px;
 
-h2
+}
+
+/* footer styling */
+
+h3 {
+
+}
+
 
 p
 
