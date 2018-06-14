@@ -11,6 +11,9 @@ body{
 header { 
   font-family: 'Eater', cursive;
   color: #18121E;
+  width: 960px;
+  position: absolute;
+  text-align: 0 auto;
 }
 
 section{
@@ -64,7 +67,7 @@ p {
 /* li {} */
 
 #fish {
-  width: 50%;
+  width: 450px;
   position: absolute;
   top: 400px;
   left: 400px, 
