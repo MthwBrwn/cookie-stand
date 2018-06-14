@@ -1,13 +1,13 @@
 'use strict';
-console.log('hello there!');
+// console.log('hello there!');
 // this is my special '42' note!!
 
 
 // global variables
-var hours = ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+var hours = ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'];
 //array storing all cookie values
 var tableEl = document.getElementById('first' );
-var allStores = [];
+var allStores = [0];
 
 var tRowEl = document.createElement('tr');
 
@@ -19,7 +19,7 @@ function Store(location, min, max, avg){
   this.totalForAllHours=0;
   // this.randomCookieValue();
   this.renderCookieRow();
-  allStores.push(this);
+  
 
 }
 
@@ -52,6 +52,7 @@ for(var i=0; i<hours.length; i++){
 }
 tHoursRow = document.createElement('td');
 tHoursRow.textContent = 'total';
+tRowEl.appendChild(tHoursRow);
 //attach to table
 tableEl.appendChild(tRowEl);
 
@@ -73,6 +74,7 @@ Store.prototype.renderCookieRow= function() {
     //  create  elements
     // function set to a variable 
     var localRandomCookieValue= this.randomCookieValue();
+    allStores[i] =(allStores[i]+localRandomCookieValue);
     //removed this from create element
     var tDataEl = document.createElement('td');
     // attach content
@@ -86,6 +88,7 @@ Store.prototype.renderCookieRow= function() {
     // console.log( 'totalForAllHours ' , this.totalForAllHours);
     this.totalForAllHours = (this.totalForAllHours + localRandomCookieValue);
   }
+  console.log('allstores at i: ', allStores[i]);
   //Total cookie    
   // 
   var tTotalEl=document.createElement('td');
@@ -93,10 +96,27 @@ Store.prototype.renderCookieRow= function() {
   tRowEl.appendChild(tTotalEl);
   //  
   tableEl.appendChild(tRowEl);
+
+  tRowEl = document.createElement('tr');
+  //sets blank cell
+  var tHoursRow = document.createElement('td');
+  tHoursRow.textContent = '';
+  tRowEl.appendChild(tHoursRow);
+  // fills in hours
+  for(i=0; i<hours.length; i++){
+    tHoursRow = document.createElement('td');
+    tHoursRow.textContent = allStores[i] ;
+    tRowEl.appendChild(tHoursRow);
+  }
+  tHoursRow = document.createElement('td');
+  tHoursRow.textContent = allStores;
+  tRowEl.appendChild(tHoursRow);
+  //attach to table
+  tableEl.appendChild(tRowEl);
 };
 // create new object for constructor object
 
-var firstAndPike = new Store('first and pike',23,65,6.3);
+var firstAndPike = new Store('First and Pike',23,65,6.3);
 var seaTacAirport = new Store('SeaTac Airport',3,24,1.2);
 var seaCenter = new Store('Seattle Center',11,38,2.3);
 var capHill= new Store(' Capitol Hill',20,38,2.3);
