@@ -4,7 +4,7 @@ console.log('hello there!');
 
 
 // global variables
-var hours = ['6am ','7am','8am','9am','10am','11am','12am','13am','14am','15am','16am','17am','18am','19am','20am','Total'];
+var hours = ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 //array storing all cookie values
 var tableEl = document.getElementById('first' );
 var allStores = [];
@@ -16,7 +16,7 @@ function Store(location, min, max, avg){
   this.min = min;
   this.max = max;
   this.avg = avg;
-  this.totalCookieHours=0;
+  this.totalForAllHours=0;
   // this.randomCookieValue();
   this.renderCookieRow();
   allStores.push(this);
@@ -35,41 +35,61 @@ Store.prototype.randomCookieValue = function () {
   return Math.round((Math.random() * (this.max - this.min) + this.min) * this.avg);
 };
 
-Store.prototype.addTotal= function() {
-  return this.totalCookieHours;
-};
+// Store.prototype.addTotal= function() {
+//   return this.totalCookieHours;
+// };
+
+tRowEl = document.createElement('tr');
+//sets blank cell
+var tHoursRow = document.createElement('td');
+tHoursRow.textContent = '';
+tRowEl.appendChild(tHoursRow);
+// fills in hours
+for(var i=0; i<hours.length; i++){
+  tHoursRow = document.createElement('td');
+  tHoursRow.textContent = hours[i] ;
+  tRowEl.appendChild(tHoursRow);
+}
+tHoursRow = document.createElement('td');
+tHoursRow.textContent = 'total';
+//attach to table
+tableEl.appendChild(tRowEl);
 
 Store.prototype.renderCookieRow= function() {
   // Locate table
-  // possible for loop for this =
-
+  // variable is set in order to 
   // data for store location
+
+  tRowEl = document.createElement('tr');
+
   var tStoreNameEl = document.createElement('td');
   // attach content
-
+  
   tStoreNameEl.textContent = this.getStore();
-
+  
   tRowEl.appendChild(tStoreNameEl);
-
-  for(var i = 0; i < hours.length-1; i++) {
+  
+  for(var i = 0; i < hours.length; i++) {
     //  create  elements
-
+    // function set to a variable 
+    var localRandomCookieValue= this.randomCookieValue();
     //removed this from create element
     var tDataEl = document.createElement('td');
     // attach content
 
-    tDataEl.textContent = this.randomCookieValue();
-
+    tDataEl.textContent = localRandomCookieValue;
+    
     // 3. append to the DOM
     // parentElement.appendChild(childElement);
     tRowEl.appendChild(tDataEl);
-    // 
-    this.totalCookieHours+ this.randomCookieValue;
+    // console.log('rando cookie hours: ', localRandomCookieValue);
+    // console.log( 'totalForAllHours ' , this.totalForAllHours);
+    this.totalForAllHours = (this.totalForAllHours + localRandomCookieValue);
   }
   //Total cookie    
   // 
   var tTotalEl=document.createElement('td');
-  tTotalEl.textContent = this.totalCookieHours;
+  tTotalEl.textContent = this.totalForAllHours;
   tRowEl.appendChild(tTotalEl);
   //  
   tableEl.appendChild(tRowEl);
