@@ -3,24 +3,28 @@ body{
   /* background-image: :  */
   background-color: #f4f4f4;
   font-family:'Oswald', sans-serif;
-  width: 90%;
+  width: 960px;
   position: relative;
+  text-align: 0 auto;
 }
 
 header { 
-  font-family: 'Eater', cursive; 
+  font-family: 'Eater', cursive;
+  color: #18121E;
 }
 
 section{
-  font-size: 14px
+  font-size: 14px;
 }
 
 aside {
-  width: 30%;
+  width: 300px;
+  position: align-right;
+  
 }
 
 footer{
-  float: right;
+  width: 960px;
   margin-right: 15px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -31,7 +35,7 @@ h1 {
   border-block-start-width: 10px;
   border-block-start-style: solid;
   border-block-start-color: #984B43;
-  border-block-end: 10px solid #984B43
+  border-block-end: 10px solid #984B43;
   }
 h2{
   font-size: 22px;
@@ -40,10 +44,16 @@ h2{
 
 /* footer styling */
 
-h3 { font-style: oblique;
+h3 { 
+  font-style: oblique;
 
 }
 
+h4 { 
+  float: left;
+
+
+}
 
 p { 
   font-size: 12px; 
