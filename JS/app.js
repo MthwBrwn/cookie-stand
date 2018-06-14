@@ -4,58 +4,74 @@ console.log('hello there!');
 
 
 // global variables
-var hours = ['6am ','7am','8am','9am','10am','11am','12am','13am','14am','15am','16am','17am','18am','19am','20am'];
+var hours = ['6am ','7am','8am','9am','10am','11am','12am','13am','14am','15am','16am','17am','18am','19am','20am','Total'];
 //array storing all cookie values
 var tableEl = document.getElementById('first' );
+var allStores = [];
+
+var tRowEl = document.createElement('tr');
 
 function Store(location, min, max, avg){
   this.location=location;
   this.min = min;
   this.max = max;
   this.avg = avg;
-  this.cookieHours=0;
+  this.totalCookieHours=0;
   // this.randomCookieValue();
   this.renderCookieRow();
+  allStores.push(this);
 
 }
 
-Store.prototype.randomCookieValue = function () {
 
+// building function to put storeName on table
+Store.prototype.getStore= function () {
+  // this.location= location;
+  // console.log('store location: ', this.location);
+  return this.location;
+};
+
+Store.prototype.randomCookieValue = function () {
   return Math.round((Math.random() * (this.max - this.min) + this.min) * this.avg);
 };
 
-Store.prototype.getStore= function () {
-  this.location=location;
-  console.log('store location: ', this.location[0]);
-  return this.location[0];
+Store.prototype.addTotal= function() {
+  return this.totalCookieHours;
 };
 
 Store.prototype.renderCookieRow= function() {
   // Locate table
   // possible for loop for this =
-  var tRowEl = document.createElement('tr');
-// data for store location
+
+  // data for store location
   var tStoreNameEl = document.createElement('td');
   // attach content
-  
+
   tStoreNameEl.textContent = this.getStore();
 
   tRowEl.appendChild(tStoreNameEl);
-  
-  for(var i = 0; i < hours.length; i++) {
+
+  for(var i = 0; i < hours.length-1; i++) {
     //  create  elements
-    
+
     //removed this from create element
     var tDataEl = document.createElement('td');
     // attach content
-    
+
     tDataEl.textContent = this.randomCookieValue();
-    
+
     // 3. append to the DOM
     // parentElement.appendChild(childElement);
     tRowEl.appendChild(tDataEl);
-    //append data to
+    // 
+    this.totalCookieHours+ this.randomCookieValue;
   }
+  //Total cookie    
+  // 
+  var tTotalEl=document.createElement('td');
+  tTotalEl.textContent = this.totalCookieHours;
+  tRowEl.appendChild(tTotalEl);
+  //  
   tableEl.appendChild(tRowEl);
 };
 // create new object for constructor object
@@ -65,15 +81,3 @@ var seaTacAirport = new Store('SeaTac Airport',3,24,1.2);
 var seaCenter = new Store('Seattle Center',11,38,2.3);
 var capHill= new Store(' Capitol Hill',20,38,2.3);
 var alki= new Store('Alki',2,16,4.6);
-
-console.log('this.min: ',firstAndPike.min);
-console.log('this.max; ',firstAndPike.max);
-console.log('random cookies for store ',firstAndPike.randomCookieValue);
-
-// Location        | Min / Cust | Max / Cust | Avg Cookie / Sale
-// ----------------|------------|------------|-------------------
-// 1st and Pike      |      23    |     65     |        6.3
-// SeaTac Airport  |      3     |     24     |        1.2
-// Seattle Center     |      11    |     38     |        3.7
-// Capitol Hill |      20    |     38     |        2.3
-// Alki            |      2     |     16     |        4.6
