@@ -18,11 +18,20 @@ function Store(location, min, max, avg){
   this.max = max;
   this.avg = avg;
   this.totalForAllHours=0;
+  this.soldCookiesHour= [];
   // this.randomCookieValue();
-  this.renderCookieRow();
-  
-
+  // this.renderCookieRow();
+  this.calculationOfCookiesHour = function () {  
+    for(var i=0; i<hours.length; i++){
+      var number = this.randomCookieValue();
+      this.soldCookiesHour.push(number);
+      // console.log(this.soldCookiesHour[i]);  
+      this.totalForAllHours = (this.totalForAllHours + number);
+    }
+  };
+  this.calculationOfCookiesHour();
 }
+
 
 
 // building function to put storeName on table
@@ -36,10 +45,8 @@ Store.prototype.randomCookieValue = function () {
   return Math.round((Math.random() * (this.max - this.min) + this.min) * this.avg);
 };
 
-// Store.prototype.addTotal= function() {
-//   return this.totalCookieHours;
-// };
- 
+
+// Use array to render header 
 var renderHeaderRow = function () {
   tRowEl = document.createElement('tr');
   //sets blank cell
@@ -61,35 +68,23 @@ var renderHeaderRow = function () {
 
 Store.prototype.renderCookieRow= function() {
   // Locate table
-  // variable is set in order to 
-  // data for store location
-
+  // render row based off of array soldCookiesHour[]
   tRowEl = document.createElement('tr');
 
   var tStoreNameEl = document.createElement('td');
   // attach content
-  
   tStoreNameEl.textContent = this.getStore();
-  
   tRowEl.appendChild(tStoreNameEl);
   
   for(var i = 0; i < hours.length; i++) {
-    //  create  elements
-    // function set to a variable 
-    var localRandomCookieValue= this.randomCookieValue();
-    // allStores[i] =(allStores[i]+localRandomCookieValue);
-    //removed this from create element
+    
     var tDataEl = document.createElement('td');
     // attach content
 
-    tDataEl.textContent = localRandomCookieValue;
-    
-    // 3. append to the DOM
-    // parentElement.appendChild(childElement);
+    tDataEl.textContent = this.soldCookiesHour[i];
+  
     tRowEl.appendChild(tDataEl);
-    // console.log('rando cookie hours: ', localRandomCookieValue);
-    // console.log( 'totalForAllHours ' , this.totalForAllHours);
-    this.totalForAllHours = (this.totalForAllHours + localRandomCookieValue);
+
   }
   // console.log(allStores);
   //Total cookie    
@@ -100,20 +95,20 @@ Store.prototype.renderCookieRow= function() {
   //  
   tableEl.appendChild(tRowEl);
 
-  tRowEl = document.createElement('tr');
-  //sets blank cell
-  var tHoursRow = document.createElement('td');
-  tHoursRow.textContent = '';
-  tRowEl.appendChild(tHoursRow);
-  // fills in hours
-  for(i=0; i<hours.length; i++){
-    tHoursRow = document.createElement('td');
-    // tHoursRow.textContent = allStores[i] ;
-    tRowEl.appendChild(tHoursRow);
-  }
-  tRowEl.appendChild(tHoursRow);
-  //attach to table
-  tableEl.appendChild(tRowEl);
+  // tRowEl = document.createElement('tr');
+
+  // var tHoursRow = document.createElement('td');
+  // tHoursRow.textContent = '';
+  // tRowEl.appendChild(tHoursRow);
+  // // fills in hours
+  // for(i=0; i<hours.length; i++){
+  //   tHoursRow = document.createElement('td');
+  //   // tHoursRow.textContent = allStores[i] ;
+  //   tRowEl.appendChild(tHoursRow);
+  // }
+  // tRowEl.appendChild(tHoursRow);
+  // //attach to table
+  // tableEl.appendChild(tRowEl);
 };
 renderHeaderRow();
 // create new object for constructor object
@@ -123,3 +118,9 @@ var seaTacAirport = new Store('SeaTac Airport',3,24,1.2);
 var seaCenter = new Store('Seattle Center',11,38,2.3);
 var capHill= new Store(' Capitol Hill',20,38,2.3);
 var alki= new Store('Alki',2,16,4.6);
+
+firstAndPike.renderCookieRow();
+seaTacAirport.renderCookieRow();
+seaCenter.renderCookieRow();
+capHill.renderCookieRow();
+alki.renderCookieRow();
