@@ -4,8 +4,8 @@
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="reset.css" />  
-      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" type="text/css" href="css/reset.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>
 
     </title>
@@ -14,12 +14,31 @@
   <body>
     <table id = "first">                 
     </table>
-        
-    <footer>
+    <form id="cookie-sales">
+        <fieldset>
+          <legend>New Store Creator </legend>
+          <!-- All fields are required -->
+          <label for="storeLocation">Store Location:</label>
+          <input name="storeLocation" type="text" required>
+          
+          <label for="minimumSales">Minimum Sales:</label>
+          <input name="minimumSales" type="text" required>
+          
+          <br />
+          <label for="maximumSales"> Maximum Sales:</label> 
+          <input name="maximumSales" type=" text" required>
+  
+          <label for= "avgSales"> Avg Sale / customer :</label>
+          <input name="avgSales" type="text" required>
+          <br />
+          <button> add store data</button>
+        </fieldset>
+      </form>
+    <footer class = "salespg">
       <h4> Locations </h4>
       <h4>Contact </h4>
       <h4> Hours </h4>
-      <h4> Testamonials </h4>
+      <h4> Testimonials </h4>
       <h4> <a href ="sales.html"> Sales </a> </h4>
     </footer>
    
