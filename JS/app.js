@@ -19,6 +19,7 @@ function Store(location, min, max, avg){
   this.avg = avg;
   this.totalForAllHours=0;
   this.soldCookiesHour= [];
+  allStores.push(this);
   // this.randomCookieValue();
   // this.renderCookieRow();
   this.calculationOfCookiesHour = function () {  
@@ -67,45 +68,34 @@ var renderHeaderRow = function () {
 };
 
 Store.prototype.renderCookieRow= function() {
-  // Locate table
-  // render row based off of array soldCookiesHour[]
+  // creates first block in table(store location)
   tRowEl = document.createElement('tr');
-
   var tStoreNameEl = document.createElement('td');
-  // attach content
   tStoreNameEl.textContent = this.getStore();
   tRowEl.appendChild(tStoreNameEl);
-  
+  // for generates cookie amounts over all hours
   for(var i = 0; i < hours.length; i++) {
-    
     var tDataEl = document.createElement('td');
-    // attach content
-
     tDataEl.textContent = this.soldCookiesHour[i];
-  
     tRowEl.appendChild(tDataEl);
-
   }
-
-  // console.log(allStores);
-  //Total cookie    
-  // 
+  // finishes with last column which is sum of hours
   var tTotalEl=document.createElement('td');
   tTotalEl.textContent = this.totalForAllHours;
   tRowEl.appendChild(tTotalEl);
-  //  
   tableEl.appendChild(tRowEl);
+};
+  
+Store.addNewStore = function(event) {
+//prevent refreshing of page
+  event.preventDefault();
+  var newLocation = event.target.storeLocation.value;
+  var newMinSales = event.target.minimumSales.value;
+  var newMaxSales = event.target.maximumSales.value;
+  var newAvgSales = event.target.avgSales.value;
 
-  Store.addNewStore = function(event) {
-  //prevent refreshing of page
-    event.preventDefault();
-    var newLocation = event.target.storeLocation.value;
-    var newMinSales = event.target.minimumSales.value;
-    var newMaxSales = event.target.avgSales.value;
-    var newAvgSales = event.target.avgSales.value;
-    
-    new Store(newLocation, newMinSales, newMaxSales, newAvgSales);
-  };
+  new Store(newLocation, newMinSales, newMaxSales, newAvgSales);
+};
   // tRowEl = document.createElement('tr');
 
   // var tHoursRow = document.createElement('td');
@@ -120,7 +110,6 @@ Store.prototype.renderCookieRow= function() {
   // tRowEl.appendChild(tHoursRow);
   // //attach to table
   // tableEl.appendChild(tRowEl);
-};
 
 
 
@@ -131,6 +120,7 @@ var capHill= new Store(' Capitol Hill',20,38,2.3);
 var alki= new Store('Alki',2,16,4.6);
 
 renderHeaderRow();
+// allStores.renderCookieRow();
 firstAndPike.renderCookieRow();
 seaTacAirport.renderCookieRow();
 seaCenter.renderCookieRow();
