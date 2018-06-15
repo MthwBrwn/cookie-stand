@@ -10,6 +10,7 @@ body{
 }
 
 header { 
+
   font-family: 'Eater', cursive;
   color: #18121E;
   width: 960px;
@@ -31,8 +32,17 @@ aside {
 footer{
   width: 960px;
   margin-right: 15px;
+  margin-top: 15 px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  border: 5px solid #233237;
+}
+
+table {
+  background-color: #f4f4f4;
+  width: 960px;
+  padding-top: 200px;
+  padding-left: 400px;
 }
 
 h1 {
@@ -55,11 +65,31 @@ h3 {
 }
 
 h4 { 
-  /* float: left; */
+  float: left;
+  padding-right: 25px;
+  
 
 
 }
 
+label {
+  background-color: #EAC67A;
+  color: #18121E;
+
+}
+
+legend {
+  text-align: center;
+  padding-bottom: 10px;
+  width: 960 px;
+  border: 5px solid #984B43;
+  background-color: #EAC67A;
+  color: #18121E;
+}
+
+button {
+  padding: 5px 15px;  background-color: #984B43;
+}
 p { 
   font-size: 12px; 
  }

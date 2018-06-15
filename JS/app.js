@@ -86,6 +86,7 @@ Store.prototype.renderCookieRow= function() {
     tRowEl.appendChild(tDataEl);
 
   }
+
   // console.log(allStores);
   //Total cookie    
   // 
@@ -95,6 +96,16 @@ Store.prototype.renderCookieRow= function() {
   //  
   tableEl.appendChild(tRowEl);
 
+  Store.addNewStore = function(event) {
+  //prevent refreshing of page
+    event.preventDefault();
+    var newLocation = event.target.storeLocation.value;
+    var newMinSales = event.target.minimumSales.value;
+    var newMaxSales = event.target.avgSales.value;
+    var newAvgSales = event.target.avgSales.value;
+    
+    new Store(newLocation, newMinSales, newMaxSales, newAvgSales);
+  };
   // tRowEl = document.createElement('tr');
 
   // var tHoursRow = document.createElement('td');
@@ -110,8 +121,8 @@ Store.prototype.renderCookieRow= function() {
   // //attach to table
   // tableEl.appendChild(tRowEl);
 };
-renderHeaderRow();
-// create new object for constructor object
+
+
 
 var firstAndPike = new Store('First and Pike',23,65,6.3);
 var seaTacAirport = new Store('SeaTac Airport',3,24,1.2);
@@ -119,8 +130,15 @@ var seaCenter = new Store('Seattle Center',11,38,2.3);
 var capHill= new Store(' Capitol Hill',20,38,2.3);
 var alki= new Store('Alki',2,16,4.6);
 
+renderHeaderRow();
 firstAndPike.renderCookieRow();
 seaTacAirport.renderCookieRow();
 seaCenter.renderCookieRow();
 capHill.renderCookieRow();
 alki.renderCookieRow();
+
+var cookieSales = document.getElementById(cookie-sales);
+//event Listener 
+cookieSales.addEventListener('submit', addNewStore);
+
+// example :dogForm.addEventListener('submit', Dog.addNewDog);
