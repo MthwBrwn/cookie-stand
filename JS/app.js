@@ -1,5 +1,5 @@
 'use strict';
-console.log('hello world');
+
 
 // this is my special '42' note!!
 
@@ -20,13 +20,21 @@ var pikeStore = {
   min: 23,
   max: 65,
   avg : 6.3,
+  cookiesPerHour : [],
 
   // returns random number between min max mult. by the avg
   numCookiesArr : function () {
-    console.log('min' + pikeStore.min);
-    var randomGenNum= (Math.floor((Math.random() * (this.max - this.min)) + this.min));
-    console.log(randomGenNum);
+    var randomGenNum= (Math.floor((Math.random() * (max - min)) + min));
+    console.log('numcookies' randomGenNum);
+    
+  calcCookie : function () {
+    for (var i=0; i < hours.length; i++) {
+      numCookiesArr
+    }
   },
+
+
+}
 
   renderCookie: function () {
     var ulPosition = document.getElementById('first');
