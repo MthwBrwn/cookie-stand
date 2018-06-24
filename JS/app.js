@@ -16,47 +16,59 @@ var hours= ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm
 
 /// 1st object creating PIKE store
 
+      
+var ulPosition = document.getElementById('first');
+
 var pikeStore = {
-  min: 23,
-  max: 65,
-  avg : 6.3,
+  minCustomer: 23,
+  maxCustomer: 65,
+  avgCookiePerCust : 6.3,
   cookiesPerHour : [],
-
-  // returns random number between min max mult. by the avg
-  numCookiesArr : function () {
-    var randomGenNum= (Math.floor((Math.random() * (max - min)) + min));
-    console.log('numcookies' randomGenNum);
-    
-  calcCookie : function () {
+  // returns random number between min max
+  randomCookiesPerHour: function () {
+    return (Math.floor((Math.random() * (this.maxCustomer - this.minCustomer)) + this.minCustomer)); 
+  },
+  // calcs random number by avg for each hour
+  calcCookiePike : function () {
     for (var i=0; i < hours.length; i++) {
-      numCookiesArr
+      cookiesPerHour.push(randomCookies[i]*(avg));
     }
+    console.log(cookiesPerHour);
   },
 
 
-}
-
-  renderCookie: function () {
-    var ulPosition = document.getElementById('first');
-
-    for (var i=0; i < hours.length; i++) { 
-
-      console.log(hours[i]);
-      //create li 
-      var newElem = document.createElement('li');
-      // give content
-      newElem.textContent= this.hours[i]+ ': '+ pikeStore.numCookiesArr() + ' cookies' ;
-
-      // append to interact with Dom      
-      ulPosition.appendChild(newElem);
-    }
-  },
-  // create 
-  // give content 
-  // append to the DOM  
 };
+  // applies calcdata to chart 
+//   renderCookiePike: function () {
+    
+//     for (var i=0; i < hours.length; i++) { 
+      
+//       console.log(hours[i]);
+//       //create li 
+//       var newElem = document.createElement('li');
+//       // give content
+//       newElem.textContent= hours[i]+ ': '+ pikeStore.calcCookiePike() + ' cookies' ;
+      
+//       // append to interact with Dom      
+//       ulPosition.appendChild(newElem);
+//     }
 
-console.log(pikeStore.min);
+//   }
+// };
+
+
+
+      // create 
+      // give content 
+      // append to the DOM  
+//       };
+//     }
+//   },
+
+// }
+
+
+// console.log(pikeStore.min);
 
 
 
