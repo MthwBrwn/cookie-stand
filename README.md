@@ -2,7 +2,11 @@
 
 This file is a Objects- based exercise involving a cookie-stand and salmon cookies - 
 
-
+this uses a css reset form Meyer web
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
 -colors -
 Cool vs Warm canva.com
