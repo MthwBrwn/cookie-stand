@@ -1,5 +1,3 @@
-'use strict';
-
 
 // this is my special '42' note!!
 
@@ -121,10 +119,7 @@ var capHillStore = {
 };
 
 capHillStore.renderCookie();
-
-
-
-// Alki      |      2    |     16     |      4.6
+/ Alki      |      2    |     16     |      4.6
 
 var alkiStore = {
   minCustomer: 2,
@@ -149,3 +144,4 @@ var alkiStore = {
 };
 
 alkiStore.renderCookie();
+
