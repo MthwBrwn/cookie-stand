@@ -26,68 +26,25 @@ var pikeStore = {
   cookiesPerHour : [],
   // returns random number between min max
   randomCookiesPerHour: function () {
-    return (Math.floor((Math.random() * (this.maxCustomer - this.minCustomer)) + this.minCustomer)); 
+    var rawRandomNum= ((Math.random() * (this.maxCustomer - this.minCustomer)) + this.minCustomer); 
+    return Math.floor(rawRandomNum* this.avgCookiePerCust);
   },
-  // calcs random number by avg for each hour
-  calcCookiePike : function () {
-    for (var i=0; i < hours.length; i++) {
-      cookiesPerHour.push(randomCookies[i]*(avg));
-    }
-    console.log(cookiesPerHour);
-  },
-
-
-};
   // applies calcdata to chart 
-//   renderCookiePike: function () {
+  renderCookiePike: function () {
     
-//     for (var i=0; i < hours.length; i++) { 
-      
-//       console.log(hours[i]);
-//       //create li 
-//       var newElem = document.createElement('li');
-//       // give content
-//       newElem.textContent= hours[i]+ ': '+ pikeStore.calcCookiePike() + ' cookies' ;
-      
-//       // append to interact with Dom      
-//       ulPosition.appendChild(newElem);
-//     }
+    for (var i=0; i < hours.length; i++) { 
+      //create li 
+      var newElem = document.createElement('li');
+      // give content
+      newElem.textContent= hours[i]+ ': '+ this.randomCookiesPerHour() + ' cookies' ;
+      // append to interact with Dom      
+      ulPosition.appendChild(newElem);
+    }
+  }
+};
+ 
+pikeStore.renderCookiePike();
 
-//   }
-// };
-
-
-
-      // create 
-      // give content 
-      // append to the DOM  
-//       };
-//     }
-//   },
-
-// }
-
-
-// console.log(pikeStore.min);
-
-
-
-// for (var i=0; i < pikeStore.hours.length; i++) { 
-  
-//   console.log(arrCookie);
-//   var newElem = document.createElement('li');
-//   var arrCookie = Math.round(pikeStore.numCookies());
-//   newElem.appendChild(arrCookie);
-//   document.getElementById("first").textContent = arrCookie;
-//   var position = document.getElementById("first")[i];
-//   position.appendChild(newElem);
-
-// }
-
-// function postNum() {
-//   document.getElementById("first").textContent = arrCookie;
-// }
-// postNum();
 
 
 
