@@ -1,5 +1,9 @@
 
-body{}
+body{
+  position: relative;
+  top: 40px;
+  left:40px;
+}
 
 header{}
 
@@ -11,10 +15,13 @@ footer{}
 
 h1{
   font-size: 36px;
+  padding-bottom: 7px; 
 }
 
 h2{
   font-size: 24px;
+  padding-bottom: 4px;
+
 }
 
 p{}
@@ -23,7 +30,10 @@ ul{
   float: left;
   display: inline-block;
   margin: 20px;
+   
 }
 
-li {}
+li {
+  padding-bottom: 2px;
+}
 

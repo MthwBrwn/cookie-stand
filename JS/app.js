@@ -31,7 +31,7 @@ var pikeStore = {
     return Math.floor(rawRandomNum* this.avgCookiePerCust);
   },
   // applies calcdata to chart 
-  renderCookiePike: function () {
+  renderCookie: function () {
     var ulPosition = document.getElementById('first');
     for (var i=0; i < hours.length; i++) { 
       //create li 
@@ -44,7 +44,7 @@ var pikeStore = {
   }
 };
  
-pikeStore.renderCookiePike();
+pikeStore.renderCookie();
 
 // SeaTac Airport  |      3     |     24     |        1.2
 var seaTacStore = {
@@ -57,7 +57,7 @@ var seaTacStore = {
     return Math.floor(rawRandomNum* this.avgCookiePerCust);
   },
    
-  renderCookiePike: function () {
+  renderCookie: function () {
     var ulPosition = document.getElementById('second');
     for (var i=0; i < hours.length; i++) { 
       
@@ -70,7 +70,31 @@ var seaTacStore = {
   }
 };
  
-seaTacStore.renderCookiePike();
+seaTacStore.renderCookie();
 
+// Seattle Center     |      11    |     38     |        3.7
 
+var SeaCenterStore = {
+  minCustomer: 11,
+  maxCustomer: 38,
+  avgCookiePerCust : 3.7,
+  
+  randomCookiesPerHour: function () {
+    var rawRandomNum= ((Math.random() * (this.maxCustomer - this.minCustomer)) + this.minCustomer); 
+    return Math.floor(rawRandomNum* this.avgCookiePerCust);
+  },
+   
+  renderCookie: function () {
+    var ulPosition = document.getElementById('third');
+    for (var i=0; i < hours.length; i++) { 
+      
+      var newElem = document.createElement('li');
+     
+      newElem.textContent= hours[i]+ ': '+ this.randomCookiesPerHour() + ' cookies' ;
+           
+      ulPosition.appendChild(newElem);
+    }
+  }
+};
 
+SeaCenterStore.renderCookie();
