@@ -11,14 +11,13 @@
 // Capitol Hill |      20    |     38     |        2.3
 // Alki            |      2     |     16     |        4.6
 
+
+
 // global variables 
 var hours= ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 // get element from sales page - will be global 
 
-var ulPosition2 = document.getElementById('second');
-var ulPosition3 = document.getElementById('third');
-var ulPosition4 = document.getElementById('fourth');
-var ulPosition5 = document.getElementById('fifth');
+
 
 /// 1st object creating PIKE store
 var pikeStore = {
@@ -98,3 +97,55 @@ var SeaCenterStore = {
 };
 
 SeaCenterStore.renderCookie();
+
+// Capitol Hill |      20    |     38     |        2.3
+
+var capHillStore = {
+  minCustomer: 20,
+  maxCustomer: 38,
+  avgCookiePerCust : 2.3,
+  
+  randomCookiesPerHour: function () {
+    var rawRandomNum= ((Math.random() * (this.maxCustomer - this.minCustomer)) + this.minCustomer); 
+    return Math.floor(rawRandomNum* this.avgCookiePerCust);
+  },
+  //  why is this not working ?
+  renderCookie: function () {
+    var ulPosition = document.getElementById('fourth');
+    for (var i=0; i < hours.length; i++) {   
+      var newElem = document.createElement('li');   
+      newElem.textContent= hours[i]+ ': '+ this.randomCookiesPerHour() + ' cookies' ;    
+      ulPosition.appendChild(newElem);
+    }
+  }
+};
+
+capHillStore.renderCookie();
+
+
+
+// Alki      |      2    |     16     |      4.6
+
+var alkiStore = {
+  minCustomer: 2,
+  maxCustomer: 16,
+  avgCookiePerCust : 4.6,
+  
+  randomCookiesPerHour: function () {
+    var rawRandomNum= ((Math.random() * (this.maxCustomer - this.minCustomer)) + this.minCustomer); 
+    return Math.floor(rawRandomNum* this.avgCookiePerCust);
+  },
+
+
+  renderCookie: function () {
+    var ulPosition = document.getElementById('fifth');
+    for (var i=0; i < hours.length; i++) {   
+      var newElem = document.createElement('li');   
+      newElem.textContent= hours[i]+ ': '+ this.randomCookiesPerHour() + ' cookies' ;    
+      ulPosition.appendChild(newElem);
+    }
+  }
+
+};
+
+alkiStore.renderCookie();
