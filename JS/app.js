@@ -1,7 +1,6 @@
 
-'use strict';
-// console.log('hello there!');
 // this is my special '42' note!!
+
 
 
 // global variables
@@ -81,32 +80,12 @@ var renderHeaderRow = function () {
     tHoursRow = document.createElement('th');
     tHoursRow.textContent = hours[i] ;
     tRowEl.appendChild(tHoursRow);
-  }
-  tHoursRow = document.createElement('th');
-  tHoursRow.textContent = 'Total';
-  tRowEl.appendChild(tHoursRow);
-  //attach to table
-  tableEl.appendChild(tRowEl);
-};
 
-Store.prototype.renderCookieRow= function() {
-  // creates first block in table(store location)
-  tRowEl = document.createElement('tr');
-  var tStoreNameEl = document.createElement('td');
-  tStoreNameEl.textContent = this.getStore();
-  tRowEl.appendChild(tStoreNameEl);
-  // for generates cookie amounts over all hours
-  for(var i = 0; i < hours.length; i++) {
-    var tDataEl = document.createElement('td');
-    tDataEl.textContent = this.soldCookiesHour[i];
-    tRowEl.appendChild(tDataEl);
   }
-  // finishes with last column which is sum of hours
-  var tTotalEl=document.createElement('td');
-  tTotalEl.textContent = this.totalForAllHours;
-  tRowEl.appendChild(tTotalEl);
-  tableEl.appendChild(tRowEl);
 };
+ 
+
+
 //All stores call
 Store.calculateAllStoreHour = function() {
   for(var i; i<5; i++) {
