@@ -9,14 +9,14 @@ var hours = ['6am ','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4p
 //array storing all cookie values
 var allStores = [];
 var storeArray = [
-  firstAndPike, 
-  seaTacAirport, 
-  seaCenter, 
+  firstAndPike,
+  seaTacAirport,
+  seaCenter,
   capHill,
   alki
-  ];
+];
 var tableEl = document.getElementById('first' );
-var tableEl_2 = document.getElementById('second' );
+// var tableEl_2 = document.getElementById('second' );
 var tRowEl = document.createElement('tr');
 var totalArrPerHour=[];
 function Store(location, min, max, avg){
@@ -25,15 +25,15 @@ function Store(location, min, max, avg){
   this.max = max;
   this.avg = avg;
   allStores.push(this);
-  // for a running total 
+  // for a running total
   this.totalForAllHours=0;
   this.soldCookiesHour= [];
 
-  this.calculationOfCookiesHour = function () {  
+  this.calculationOfCookiesHour = function () {
     for(var i=0; i<hours.length; i++){
       var number = this.randomCookieValue();
       this.soldCookiesHour.push(number);
-      // console.log(this.soldCookiesHour[i]);  
+      // console.log(this.soldCookiesHour[i]);
       this.totalForAllHours = (this.totalForAllHours + number);
     }
   };
@@ -58,7 +58,7 @@ Store.prototype.randomCookieValue = function () {
 // total for day
 Store.prototype.CalcAllStoreTotalPerHour = function() {
   for (var i=0; i< hours; i++) {
-    for (var x =0 ;x < storeArray  ;x++){
+    for (var x =0 ;x < storeArray ;x++){
       var totalCookiesAllLocs =0;
       totalCookiesAllLocs+ storeArray[x].soldCookiesHour[i];
     }
@@ -66,7 +66,7 @@ Store.prototype.CalcAllStoreTotalPerHour = function() {
   }
 };
 console.log(totalArrPerHour);
-// Use array to render header 
+// Use array to render header
 var renderHeaderRow = function () {
   tRowEl = document.createElement('tr');
   //sets blank cell
@@ -105,30 +105,31 @@ Store.prototype.renderCookieRow= function() {
   tableEl.appendChild(tRowEl);
 };
 //All stores call
-var renderAllCookieRow = function() {
+Store.prototype.calculateAllStoreHour = function() {
   for(var i; i<5; i++) {
-    allStores[i].renderCookieRow();
+    allStores[i];
   }
 };
 
-var renderCookieFooter= function() {
+Store.prototype.renderCookieFooter= function() {
   // creates first block in table(Hard coded)
-  tRowEl_2 = document.createElement('tr');
+  tRowEl = document.createElement('tr');
   var tStoreNameEl = document.createElement('tfoot');
-  tStoreNameEl.textContent = "total for hour";
+  tStoreNameEl.textContent = 'total for hour';
   tRowEl.appendChild(tStoreNameEl);
   // for generates cookie amounts over all hours
   for(var i = 0; i < hours.length; i++) {
     var tDataEl = document.createElement('tfoot');
     tDataEl.textContent = totalArrPerHour [i];
-    tRowEl.appendChild(tDataEl_2);
+    tRowEl.appendChild(tDataEl);
   }
   // finishes with last column which is sum of hours
   var tTotalEl=document.createElement('td');
   tTotalEl.textContent = this.totalForAllHours;
   tRowEl.appendChild(tTotalEl);
   tableEl.appendChild(tRowEl);
-  
+};
+
 Store.addNewStore= function(event) {
 //prevent refreshing of page
   event.preventDefault();
@@ -136,16 +137,20 @@ Store.addNewStore= function(event) {
   var newMinSales = event.target.minimumSales.value;
   var newMaxSales = event.target.maximumSales.value;
   var newAvgSales = event.target.avgSales.value;
+  this.totalForAllHours=0;
+  this.soldCookiesHour= [];
+  this.storeArray.push(this);
 
   new Store(newLocation, newMinSales, newMaxSales, newAvgSales);
 };
+
 // tRowEl = document.createElement('tr');
 
 // var tHoursRow = document.createElement('td');
 // tHoursRow.textContent = '';
 // tRowEl.appendChild(tHoursRow);
 // // fills in hours
-// for(i=0; i<hours.length; i++){
+// for(var i=0; i<hours.length; i++){
 //   tHoursRow = document.createElement('td');
 //   // tHoursRow.textContent = allStores[i] ;
 //   tRowEl.appendChild(tHoursRow);
@@ -163,17 +168,19 @@ var capHill= new Store(' Capitol Hill',20,38,2.3);
 var alki= new Store('Alki',2,16,4.6);
 
 renderHeaderRow();
-//  --- need to get this working 
+//  --- need to get this working
 // renderAllCookieRow();
 firstAndPike.renderCookieRow();
 seaTacAirport.renderCookieRow();
 seaCenter.renderCookieRow();
 capHill.renderCookieRow();
 alki.renderCookieRow();
-new Store.renderCookieRow();
+// new Store.renderCookieRow();
+// Store.newStoreObject.renderCookieFooter();
 
 var cookieSales = document.getElementById('cookie-sales');
-//event Listener 
+//event Listener
 cookieSales.addEventListener('submit', Store.addNewStore);
+console.log(newStoreObject);
 
 // example :dogForm.addEventListener('submit', Dog.addNewDog);
